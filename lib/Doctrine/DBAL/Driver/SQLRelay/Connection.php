@@ -25,6 +25,7 @@ class Connection implements \Doctrine\DBAL\Driver\Connection
      * @param $password
      * @param $retryTime
      * @param $numberOfTries
+     * @param $engine
      * @throws Exception
      */
     public function __construct($server, $port, $socket, $user, $password, $retryTime, $numberOfTries)
@@ -33,7 +34,7 @@ class Connection implements \Doctrine\DBAL\Driver\Connection
         sqlrcon_autoCommitOff($this->dbh);
         //sqlrcon_autoCommitOn
         
-        if ( ! $this->dbh) {
+        if ( !$this->dbh) {
             throw Exception::fromErrorInfo('SQL Relay conn error');
         }
     }
